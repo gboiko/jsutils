@@ -40,3 +40,19 @@ var func = function(arg) { return "name: " + arg; },
 _func();
 //name: ling
 ```
+## keys(obj)
+return keys of given object
+
+```js
+var obj = {name: '1',value: '2', some: '3'};
+$u.keys(obj);
+//["name", "value", "some"];
+```
+## values(obj)
+return values of given object
+
+```js
+var obj = {name: '1',value: '2', some: '3'};
+$u.values(obj);
+//["1", "2", "3"];
+```
