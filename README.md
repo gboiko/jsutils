@@ -58,3 +58,27 @@ $u.values(obj);
 ```
 ## Class.extend
 simple js inheritance 
+
+```js
+var Dog = $u.Class.extend({
+  init: function(name){
+    this.name = name;
+  },
+  get_name: function (){
+    return this.name;
+  }
+});
+
+var Dog_1 = Dog.extend({
+  init: function(name){
+    this._super(name);
+  }
+});
+
+var d = new Dog('d');
+var d_1 = new Dog_1('d_1');
+d.get_name();
+//"d"
+d_1.get_name();
+//"d_1"
+```
