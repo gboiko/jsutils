@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Jsutils : " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Jsutils</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/gboyko/jsutils">View on GitHub</a>
+
+          <h1 id="project_title">Jsutils</h1>
+          <h2 id="project_tagline"></h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/gboyko/jsutils/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/gboyko/jsutils/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>JSUtils</h1>
+
+<p>Simple js functions for convenience</p>
+
+<h2>isFunction(),isArray(),isObject(),isString()</h2>
+
+<p>Returns true if a given variable matche</p>
+
+<div class="highlight"><pre><span class="nx">$u</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="kd">function</span><span class="p">(){});</span>
+<span class="c1">//true</span>
+<span class="nx">$u</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="c1">//false</span>
+
+<span class="nx">$u</span><span class="p">.</span><span class="nx">isArray</span><span class="p">([]);</span>
+<span class="c1">//true</span>
+<span class="nx">$u</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="c1">//false</span>
+
+<span class="nx">$u</span><span class="p">.</span><span class="nx">isObject</span><span class="p">({});</span>
+<span class="c1">//true</span>
+<span class="nx">$u</span><span class="p">.</span><span class="nx">isObject</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="c1">//false</span>
+
+<span class="nx">$u</span><span class="p">.</span><span class="nx">isString</span><span class="p">(</span><span class="s1">''</span><span class="p">);</span>
+<span class="c1">//true</span>
+<span class="nx">$u</span><span class="p">.</span><span class="nx">isString</span><span class="p">({});</span>
+<span class="c1">//false</span>
+</pre></div>
+
+<h2>bind(fn,context,*[arguments])</h2>
+
+<p>bind given function to context if given, and pass arguments if given</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span> <span class="o">:</span> <span class="s1">'test'</span><span class="p">},</span>
+    <span class="nx">func</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">"name: "</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="nx">arg</span><span class="p">);</span> <span class="p">},</span>
+    <span class="nx">_func</span> <span class="o">=</span> <span class="nx">$u</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">context</span><span class="p">);</span>
+<span class="nx">_func</span><span class="p">();</span>
+<span class="c1">//name: test</span>
+
+<span class="kd">var</span> <span class="nx">func</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="s2">"name: "</span> <span class="o">+</span> <span class="nx">arg</span><span class="p">;</span> <span class="p">},</span>
+    <span class="nx">_func</span> <span class="o">=</span> <span class="nx">$u</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s1">'ling'</span><span class="p">);</span>
+<span class="nx">_func</span><span class="p">();</span>
+<span class="c1">//name: ling</span>
+</pre></div>
+
+<h2>keys(obj)</h2>
+
+<p>return keys of given object</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'1'</span><span class="p">,</span><span class="nx">value</span><span class="o">:</span> <span class="s1">'2'</span><span class="p">,</span> <span class="nx">some</span><span class="o">:</span> <span class="s1">'3'</span><span class="p">};</span>
+<span class="nx">$u</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="c1">//["name", "value", "some"]</span>
+</pre></div>
+
+<h2>values(obj)</h2>
+
+<p>return values of given object</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">'1'</span><span class="p">,</span><span class="nx">value</span><span class="o">:</span> <span class="s1">'2'</span><span class="p">,</span> <span class="nx">some</span><span class="o">:</span> <span class="s1">'3'</span><span class="p">};</span>
+<span class="nx">$u</span><span class="p">.</span><span class="nx">values</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="c1">//["1", "2", "3"]</span>
+</pre></div>
+
+<h2>Class.extend</h2>
+
+<p>simple js inheritance </p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">Dog</span> <span class="o">=</span> <span class="nx">$u</span><span class="p">.</span><span class="nx">Class</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="nx">get_name</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(){</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">Dog_1</span> <span class="o">=</span> <span class="nx">Dog</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_super</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dog</span><span class="p">(</span><span class="s1">'d'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">d_1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dog_1</span><span class="p">(</span><span class="s1">'d_1'</span><span class="p">);</span>
+<span class="nx">d</span><span class="p">.</span><span class="nx">get_name</span><span class="p">();</span>
+<span class="c1">//"d"</span>
+<span class="nx">d_1</span><span class="p">.</span><span class="nx">get_name</span><span class="p">();</span>
+<span class="c1">//"d_1"</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Jsutils maintained by <a href="https://github.com/gboyko">gboyko</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
